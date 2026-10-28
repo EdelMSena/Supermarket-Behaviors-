@@ -38,3 +38,12 @@ def get_subset(df, n=12000, seed=40, out_path=None):
     out_path.parent.mkdir(parents=True, exist_ok=True)
     subset.to_csv(out_path, index=False)
     return subset
+
+def check_data_quality(df):
+
+    quality_report = {
+        "shape": df.shape,
+        "missing_values": df.isnull().sum(),
+        "duplicated_values": df.duplicated().sum()
+    }
+    return quality_report
