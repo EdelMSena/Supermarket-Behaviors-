@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import pandas as pd
 
 def load_data(file_path: str) -> pd.DataFrame:
@@ -22,3 +24,17 @@ def load_data(file_path: str) -> pd.DataFrame:
     except pd.errors.ParserError:
         print(f"Error: The file at {file_path} could not be parsed.") #catches the parsing error
         return pd.DataFrame()
+
+def get_subset(df, n=12000, seed=40, out_path=None):
+    if out_path is None:
+        out_path = Path(__file__).resolve().parents[1] / "Data" / "supermarket_subset.csv"
+    else:
+        out_path = Path(out_path)
+
+    if out_path.exists():
+       return pd.read_csv(out_path)
+
+    subset = df.sample(n=min(n, len(df)), random_state=seed)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    subset.to_csv(out_path, index=False)
+    return subset
