@@ -1,1 +1,2 @@
-1. The supermarket dataset
+1. The supermarket dataset https://www.kaggle.com/datasets/datascikhan/supermarket placed in "Data" or the supermarket_subset.csv file
+2. Pandas must be installed
