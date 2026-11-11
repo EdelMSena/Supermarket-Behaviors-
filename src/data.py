@@ -114,7 +114,7 @@ def check_data_quality(df: pd.DataFrame) -> Dict[str, Any]:
 
 
 if __name__ == "__main__":
-    file_path = "path/to/your/supermarket_data.csv"
+    file_path = "path/to/your/supermarket_subset.csv"
     raw_df = load_data(file_path)
     
     if not raw_df.empty:
